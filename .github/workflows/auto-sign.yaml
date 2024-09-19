@@ -7,8 +7,8 @@ on:
     - cron: "0 0 * * *"
 
 env:
-  SM_USERNAME: ${{ secrets.SM_USERNAME }}
-  SM_PASSWORD: ${{ secrets.SM_PASSWORD }}
+  SM_USERNAME: ${{ secrets.ZWXQ_USERNAME }}
+  SM_PASSWORD: ${{ secrets.ZWXQ_PASSWORD }}
 
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
       - name: Run 
         id: run
         run: |
-          node main.js 
+          node src/index.js 

@@ -1,4 +1,4 @@
-import Zhiwuxingqiu from './zhiwuxingqiu';
+import Zhiwuxingqiu from './zhiwuxingqiu/index.js';
 
 
 

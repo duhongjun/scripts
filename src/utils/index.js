@@ -23,7 +23,7 @@ function Env(t, e) {
             const e = new Date().getTime(),
                 s = (e - this.startTime) / 1e3;
             this.log("", `🔔${this.name},结束!🕛${s}秒`)
-            process.exit(1);
+            process.exit(0);
         }
     })(t, e);
 }

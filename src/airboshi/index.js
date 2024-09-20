@@ -126,7 +126,7 @@ async function main() {
         ).toLocaleString()} \n==================================================`
     )
     const userCookie = process.env.AIRBOSHI_TOKEN
-
+    console.log('userCookie', userCookie)
     if (!userCookie?.length) return console.log(`没有找到CK哦`)
 
     $.token = userCookie

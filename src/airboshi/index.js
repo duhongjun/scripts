@@ -16,8 +16,6 @@ import { Env } from '../utils/index.js'
 import axios from 'axios';
 
 const $ = new Env('瑷尔博士官方云商城')
-let ckName = `AIRBOSHI_TOKEN`
-let userCookie = process.env[ckName] || ''
 
 async function signIn() {
     const config = {
@@ -127,6 +125,8 @@ async function main() {
             8 * 60 * 60 * 1000
         ).toLocaleString()} \n==================================================`
     )
+    const userCookie = process.env.AIRBOSHI_TOKEN
+
     if (!userCookie?.length) return console.log(`没有找到CK哦`)
 
     $.token = userCookie

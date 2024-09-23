@@ -9,6 +9,7 @@ on:
 env:
   ZWXQ_USERNAME: ${{ secrets.ZWXQ_USERNAME }}
   ZWXQ_PASSWORD: ${{ secrets.ZWXQ_PASSWORD }}
+  AIRBOSHI_TOKEN: ${{ secrets.AIRBOSHI_TOKEN }}
 
 jobs:
   build:

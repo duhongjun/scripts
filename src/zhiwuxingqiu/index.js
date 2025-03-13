@@ -2,7 +2,6 @@
  * 植物星球
  * 注册：https://www.pftp2012.com
  */
-// ============================================================================================================
 import { Env, wait } from '../utils/index.js';
 import axios from 'axios';
 import md5 from 'md5';

@@ -42,6 +42,8 @@ const signIn = async () => {
         "user-agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         authorization: process.env.BC_TOKEN,
+        "user-agent-bckid": "bckid; miniProgram; 3.0.74; microsoft microsoft; Windows Unknown x64; ;1002;",
+        referer: "https://servicewechat.com/wxab5642d7bced2dcc/472/page-frame.html",
       },
       data: {},
       validateStatus: function (status) {

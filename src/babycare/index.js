@@ -92,7 +92,7 @@ const getSuperSignInInfo = async () => {
     );
     console.log("超级门店签到信息获取成功:", res.data);
     if (res.data.code === "200") {
-      const skipSignIn = res.data.body?.signDaysCountMod === 2;
+      const skipSignIn = res.data.body?.signDaysCountMod === 3;
       if (skipSignIn) {
         console.log("已签到两天，跳过签到");
         return;
@@ -144,3 +144,4 @@ export default async function main() {
   await signIn();
   await getSuperSignInInfo();
 }
+

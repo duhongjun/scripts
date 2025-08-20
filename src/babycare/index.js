@@ -23,7 +23,7 @@ const drawPrize = async (headers) => {
     console.log("抽奖响应数据:", res.data);
     if (res.data.code === "200") {
       console.log("抽奖成功", JSON.stringify(res.data.body));
-      console.log("抽奖结果", res.data.body?.signDrawPrizeResps?.find((item) => item.dragFlag)?.prizeName);
+      console.log("抽奖结果", res.data.body?.signDrawPrizeResps?.find((item) => item.drawFlag)?.prizeName);
     }
   } catch (error) {
     console.log("err", error);

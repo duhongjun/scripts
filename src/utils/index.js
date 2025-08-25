@@ -1,40 +1,16 @@
-function Env(t, e) {
-    return new (class {
-        constructor(t, e) {
-            (this.name = t),
-                (this.logs = []),
-                (this.logSeparator = "\n"),
-                (this.startTime = new Date().getTime()),
-                Object.assign(this, e),
-                this.log("", `🔔${this.name},开始!`);
-        }
-        log(...t) {
-            t.length > 0 && (this.logs = [...this.logs, ...t]),
-                console.log(t.join(this.logSeparator));
-        }
-        logErr(t) {
-            this.log("", `❗️${this.name},错误!`, t.stack)
-        }
-        wait(t) {
-            return new Promise((e) => setTimeout(e, t));
-        }
+import axios from 'axios';
 
-        done() {
-            const e = new Date().getTime(),
-                s = (e - this.startTime) / 1e3;
-            this.log("", `🔔${this.name},结束!🕛${s}秒`)
-        }
-    })(t, e);
-}
-
-
-function wait(n) {
-    return new Promise(function (resolve) {
-        setTimeout(resolve, n * 1000);
-    });
-}
-
-export {
-    Env,
-    wait,
-}
+export async function sendToServerChan(title, desp) {
+    console.log("process.env.SERVERCHAN_KEY", process.env.SERVERCHAN_KEY);
+    const url = `https://sctapi.ftqq.com/${process.env.SERVERCHAN_KEY}.send`;
+    console.log("url", url);
+    try {
+      const response = await axios.post(url, {
+        title,
+        desp,
+      });
+      console.log('推送成功:', response.data);
+    } catch (error) {
+      console.error('推送失败:', error.message);
+    }
+  }

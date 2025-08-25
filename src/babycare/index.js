@@ -1,4 +1,5 @@
 import axios from "axios";
+import { sendToServerChan } from "../utils/index.js";
 
 console.log("===============================================");
 console.log("脚本开始执行时间:", new Date().toLocaleString());
@@ -63,9 +64,12 @@ const signIn = async () => {
           "user-agent-bckid": "bckid; miniProgram; 3.0.74; microsoft microsoft; Windows Unknown x64; ;1002;",
         });
       }
+    } else {
+      throw new Error(JSON.stringify(response.data));
     }
   } catch (error) {
     console.log("请求过程中发生错误:", error);
+    throw new Error(JSON.stringify(error));
   }
 };
 
@@ -99,9 +103,12 @@ const getSuperSignInInfo = async () => {
       }
       console.log("开始超级门店签到");
       await superSignIn();
+    } else {
+      throw new Error(JSON.stringify(res.data));
     }
   } catch (error) {
     console.log("err", error);
+    throw new Error(JSON.stringify(error));
   }
 };
 
@@ -134,14 +141,22 @@ const superSignIn = async () => {
           referer: "https://servicewechat.com/wx0e31d878c0fcb362/162/page-frame.html",
         });
       }
+    } else {
+      throw new Error(JSON.stringify(res.data));
     }
   } catch (error) {
     console.log("err", error);
+    throw new Error(JSON.stringify(error));
   }
 };
 
 export default async function main() {
-  await signIn();
-  await getSuperSignInInfo();
+  try {
+    await signIn();
+    await getSuperSignInInfo();
+    await sendToServerChan("babycare自动签到成功", "旗舰店签到成功，超级门店签到成功");
+  } catch (error) {
+    await sendToServerChan("babycare自动签到出错", JSON.stringify(error));
+  }
 }
 
